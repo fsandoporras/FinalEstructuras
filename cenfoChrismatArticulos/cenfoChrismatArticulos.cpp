@@ -4,8 +4,10 @@
 #include <iostream>
 #include "listaArticulos.h"
 
+listaArticulos articulos;
+
 void menuArticulos() {
-    listaArticulos* articulos = new listaArticulos();
+    
     int opcion = -1;
 
     while (opcion != 0) {
@@ -42,12 +44,12 @@ void menuArticulos() {
             cin >> cantidad;
             cout << "Ingrese la categoria del articulo: ";
             cin >> categoria;
-            articulos->registrarArticulo(codigo, nombre, precio, cantidad, categoria);
+            articulos.registrarArticulo(codigo, nombre, precio, cantidad, categoria);
             break;
         case 2:
             cout << "Ingrese el codigo del articulo a remover: ";
             cin >> codigo;
-            articulos->removerArticulo(codigo);
+            articulos.removerArticulo(codigo);
             break;
         case 3:
             cout << "Ingrese el codigo del articulo a modificar: ";
@@ -58,44 +60,44 @@ void menuArticulos() {
             cin >> precio;
             cout << "Ingrese la nueva cantidad del articulo: ";
             cin >> cantidad;
-            articulos->modificarArticulo(codigo, nombre, precio, cantidad);
+            articulos.modificarArticulo(codigo, nombre, precio, cantidad);
             break;
         case 4:
             cout << "Ingrese el codigo del articulo a comprar: ";
             cin >> codigo;
             cout << "Ingrese la cantidad a comprar: ";
             cin >> cantidad;
-            articulos->comprarArticulo(codigo, cantidad);
+            articulos.comprarArticulo(codigo, cantidad);
             break;
         case 5:
             cout << "Ingrese el codigo del articulo a ingresar al inventario: ";
             cin >> codigo;
             cout << "Ingrese la cantidad a ingresar al inventario: ";
             cin >> cantidad;
-            articulos->ingresarInventario(codigo, cantidad);
+            articulos.ingresarInventario(codigo, cantidad);
             break;
         case 6:
-            articulos->mostrarListaArticulos();
+            articulos.mostrarListaArticulos();
             break;
         case 7:
             cout << "Ingrese la categoria a mostrar: ";
             cin >> categoria;
-            articulos->mostrarArticulosCategoria(categoria);
+            articulos.mostrarArticulosCategoria(categoria);
             break;
         case 8:
             cout << "Ingrese el límite de cantidad para mostrar los articulos: ";
             cin >> limite;
-            articulos->mostrarArticulosLimiteCantidad(limite);
+            articulos.mostrarArticulosLimiteCantidad(limite);
             break;
         case 9:
             cout << "Ingrese el porcentaje de cambio de precio: ";
             cin >> porcentaje;
-            articulos->cambiarPrecioArticulos(porcentaje);
+            articulos.cambiarPrecioArticulos(porcentaje);
             break;
         case 10:
             cout << "Ingrese el nombre del articulo a buscar: ";
             cin >> nombre;
-            articulos->mostrarArticulosPorNombre(nombre);
+            articulos.mostrarArticulosPorNombre(nombre);
             break;
         case 0:
             cout << "Saliendo del programa...";
@@ -109,7 +111,14 @@ void menuArticulos() {
 
 int main()
 {
+    
+    articulos.registrarArticulo(123456789, "Arbol de Navidad", 35.99, 50, "Decoracion");
+    articulos.registrarArticulo(234567890, "Adornos de Luces LED", 12.49, 100, "Decoracion");
+    articulos.registrarArticulo(345678901, "Papa Noel de Peluche", 19.99, 30, "Juguetes");
+    articulos.registrarArticulo(456789012, "Gorro de Santa Claus", 7.99, 80, "Ropa");
+    articulos.registrarArticulo(567890123, "Bastón de Caramelo Gigante", 3.49, 120, "Dulces");
     menuArticulos();
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

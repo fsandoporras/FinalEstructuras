@@ -126,8 +126,8 @@ void listaArticulos::mostrarListaArticulos() {
     cout << "Lista de Articulos:" << endl;
     while (temp != nullptr) {
         // Muestra los detalles del artículo
-        cout << "Código: " << temp->getCodigo() << ", Nombre: " << temp->getNombre()
-            << ", Precio: " << temp->getPrecio() << ", Cantidad Disponible: " << temp->getCantidadDisponible() << endl;
+        cout << "Codigo: " << temp->getCodigo() << ", Nombre: " << temp->getNombre()
+            << ", Precio: " << temp->getPrecio() << ", Cantidad Disponible: " << temp->getCantidadDisponible() << ", Categoria: " << temp->getCategoria() << endl;
 
         temp = temp->getSgte();
     }
@@ -140,9 +140,7 @@ void listaArticulos::mostrarArticulosCategoria(string categoria) {
     cout << "Articulos en la categoria " << categoria << ":" << endl;
 
     while (temp != nullptr) {
-        // Aquí asumimos que cada artículo tiene una categoría asociada para comparar
-        // con la categoría proporcionada como argumento
-        // Supongamos que el método getCategoria() devuelve la categoría del artículo
+        // Aquí asumimos que cada artículo tiene una categoría asociada para comparar con la categoría proporcionada como argumento
         if (temp->getCategoria() == categoria) {
             cout << "Código: " << temp->getCodigo() << ", Nombre: " << temp->getNombre()
                 << ", Precio: " << temp->getPrecio() << ", Cantidad Disponible: " << temp->getCantidadDisponible() << endl;
