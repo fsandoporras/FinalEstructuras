@@ -1,0 +1,3 @@
+C:\Users\Ana Isabel Méndez\source\repos\proyectoListas\proyectoListas\Debug\proyectoListas.exe
+C:\Users\Ana Isabel Méndez\source\repos\proyectoListas\proyectoListas\Debug\proyectoListas.pdb
+C:\Users\v-zacharyhe\Source\Repos\FinalEstructuras\cenfoteChrismatUsuario\Debug\proyectoListas.exe
