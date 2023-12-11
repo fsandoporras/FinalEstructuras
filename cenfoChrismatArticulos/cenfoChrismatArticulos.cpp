@@ -1,11 +1,182 @@
-// cenfoChrismatArticulos.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+#include <stdlib.h>
+using namespace std;
 #include <iostream>
-#include "listaArticulos.h"
 
-void menuArticulos() {
-    listaArticulos* articulos = new listaArticulos();
+#include "listaArticulos.h"
+//#include "listaUsuarios.h"
+//#include "listaCategorias.h"
+
+void menuPrincipal() {
+    int opcion = -1;
+   // listaUsuarios* usuarios = new listaUsuarios(); 
+   // listaCategorias* categorias = new listaCategorias();
+    listaArticulos*  articulos = new listaArticulos(); 
+
+    while (opcion != 0) {
+        cout << "---- Menu Principal ----" << endl;
+        cout << "(1) Gestionar Usuarios" << endl;
+        cout << "(2) Gestionar Categorias" << endl;
+        cout << "(3) Gestionar Articulos" << endl;
+        cout << "(0) Salir" << endl;
+        cout << "------------------------" << endl;
+        cout << "Ingrese la opción deseada: ";
+        cin >> opcion;
+        cout << "------------------------" << endl;
+
+        switch (opcion) {
+        case 1:
+           // menuUsuarios(usuarios);
+            break;
+        case 2:
+           // menuCategorias(categorias);
+            break;
+        case 3:
+            menuArticulos(articulos);
+            break;
+        case 0:
+            cout << "Saliendo del programa..." << endl;
+            break;
+        default:
+            cout << "Opción no válida." << endl;
+            break;
+        }
+    }
+
+    //delete usuarios;
+    //delete categorias;
+    delete articulos;
+}
+
+void menuUsuarios(/*listaUsuarios* usuarios*/) {
+    
+    int opcion = -1;
+
+    while (opcion != 0) {
+        cout << "---- Menu de usuarios ----" << endl;
+        cout << "(1) Registrar usuario" << endl;
+        cout << "(2) Remover usuario" << endl;
+        cout << "(3) Modificar usuario" << endl;
+        cout << "(4) Consultar usuario" << endl;
+        cout << "(5) Listar usuarios" << endl;
+        cout << "(0) Volver al menu principal" << endl;
+        cout << "------------------------------" << endl;
+        cout << "Ingrese la opcion deseada: ";
+        cin >> opcion;
+        cout << "------------------------------" << endl;
+
+        int cedula, telefono;
+        string nombre, apellido, correo;
+
+        switch (opcion) {
+        case 1:
+            cout << "Ingrese la cedula del usuario: ";
+            cin >> cedula;
+            cout << "Ingrese el nombre del usuario: ";
+            cin >> nombre;
+            cout << "Ingrese el apellido del usuario: ";
+            cin >> apellido;
+            cout << "Ingrese el correo electronico del usuario: ";
+            cin >> correo;
+            cout << "Ingrese el numero de telefono del usuario: ";
+            cin >> telefono;
+            usuarios->registrarUsuario(cedula, nombre, apellido, correo, telefono);
+            break;
+        case 2:
+            cout << "Ingrese la cedula del usuario a remover: ";
+            cin >> cedula;
+            usuarios->removerUsuario(cedula);
+            break;
+        case 3:
+            cout << "Ingrese la cedula del usuario a modificar: ";
+            cin >> cedula;
+            cout << "Ingrese el nuevo nombre del usuario: ";
+            cin >> nombre;
+            cout << "Ingrese el nuevo apellido del usuario: ";
+            cin >> apellido;
+            cout << "Ingrese el nuevo correo electronico del usuario: ";
+            cin >> correo;
+            cout << "Ingrese el nuevo numero de telefono del usuario: ";
+            cin >> telefono;
+            usuarios->modificarUsuario(cedula, nombre, apellido, correo, telefono);
+            break;
+        case 4:
+            cout << "Ingrese la cedula del usuario a consultar: ";
+            cin >> cedula;
+            usuarios->consultarUsuario(cedula);
+            break;
+        case 5:
+            usuarios->listarUsuarios();
+            break;
+        case 0:
+            cout << "Volviendo al Menú Principal..." << endl;
+            menuPrincipal();
+            break;
+        default:
+            cout << "Opcion no valida." << endl;
+            break;
+        }
+    }
+}
+
+void menuCategorias(/*listaCategorias* categorias*/) {
+    int opcion = -1;
+
+    while (opcion != 0) {
+        cout << "---- Menu de Categorías ----" << endl;
+        cout << "(1) Registrar Categoría" << endl;
+        cout << "(2) Remover Categoría" << endl;
+        cout << "(3) Modificar Categoría" << endl;
+        cout << "(4) Consultar Categoría" << endl;
+        cout << "(5) Listar Categorías" << endl;
+        cout << "(0) Volver al Menú Principal" << endl;
+        cout << "------------------------" << endl;
+        cout << "Ingrese la opción deseada: ";
+        cin >> opcion;
+        cout << "------------------------" << endl;
+
+        string nombre;
+
+        switch (opcion) {
+        case 1:
+            cout << "Ingrese el nombre de la categoría: ";
+            cin >> nombre;
+            categorias->registrarCategoria(nombre);
+            break;
+        case 2:
+            cout << "Ingrese el nombre de la categoría a remover: ";
+            cin >> nombre;
+            categorias->removerCategoria(nombre);
+            break;
+        case 3:
+            cout << "Ingrese el nombre de la categoría a modificar: ";
+            cin >> nombre;
+            cout << "Ingrese el nuevo nombre de la categoría: ";
+            cin >> nombre;
+            categorias->modificarCategoria(nombre);
+            break;
+        case 4:
+            cout << "Ingrese el nombre de la categoría a consultar: ";
+            cin >> nombre;
+            categorias->consultarCategoria(nombre);
+            break;
+        case 5:
+            cout << "---- Lista de Categorías ----" << endl;
+            categorias->listarCategorias();
+            cout << "--------------------------" << endl;
+            break;
+        case 0:
+            cout << "Volviendo al Menú Principal..." << endl;
+            menuPrincipal();
+            break;
+        default:
+            cout << "Opción no válida." << endl;
+            break;
+        }
+    }
+}
+
+void menuArticulos(listaArticulos* articulos) {
+
     int opcion = -1;
 
     while (opcion != 0) {
@@ -20,7 +191,7 @@ void menuArticulos() {
         cout << "(8) Mostrar articulos con Cantidad Límite" << endl;
         cout << "(9) Cambiar Precio de articulos" << endl;
         cout << "(10) Mostrar articulos por Nombre" << endl;
-        cout << "(0) Salir" << endl;
+        cout << "(0) Volver al menu principal" << endl;
         cout << "------------------------------" << endl;
         cout << "Ingrese la opcion deseada: ";
         cin >> opcion;
@@ -98,7 +269,8 @@ void menuArticulos() {
             articulos->mostrarArticulosPorNombre(nombre);
             break;
         case 0:
-            cout << "Saliendo del programa...";
+            cout << "Volviendo al Menú Principal..." << endl;
+            menuPrincipal();
             break;
         default:
             cout << "opcion no válida." << endl;
@@ -109,16 +281,9 @@ void menuArticulos() {
 
 int main()
 {
-    menuArticulos();
+    menuPrincipal();
+
+    return 0;
+
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
